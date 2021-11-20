@@ -1,5 +1,20 @@
 @import "./variables.scss";
 
+.header {
+	width: 100%;
+	text-align: center;
+}
+
+.title {
+	font-size: 60px;
+}
+
+.subheading {
+	font-size: 30px;
+	font-weight: normal;
+	margin-bottom: 0px;
+}
+
 .difficultyContainer {
 	width: 100%;
 	padding: 20px;
@@ -15,8 +30,9 @@
 	text-align: center;
 	margin: 0px 5px;
 	border-radius: 6px;
-	border: 1px solid $color-border;
+	border: 2px solid $color-border-box;
 	transition: 0.25s;
+	color: $color-main;
 }
 
 .difficultyButton:hover {
