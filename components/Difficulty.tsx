@@ -3,11 +3,16 @@ import Link from "next/link";
 import styles from "../styles/home.module.scss";
 
 export class Difficulty {
-	public static readonly Easy = new Difficulty(4, 8, "Easy");
-	public static readonly Medium = new Difficulty(4, 8, "Medium");
-	public static readonly Hard = new Difficulty(4, 8, "Hard");
-	public static readonly Expert = new Difficulty(4, 8, "Expert");
-	public static readonly Impossible = new Difficulty(4, 8, "Impossible");
+	public static readonly Easy = new Difficulty(4, 7, "Easy");
+	public static readonly Medium = new Difficulty(8, 11, "Medium");
+	public static readonly Hard = new Difficulty(12, 15, "Hard");
+	public static readonly Expert = new Difficulty(16, 19, "Expert");
+	public static readonly Impossible = new Difficulty(
+		20,
+		99,
+		"Impossible",
+		"20+"
+	);
 
 	private constructor(
 		public readonly minAge: number,
@@ -23,10 +28,10 @@ type DifficultyButtonProps = {
 export class DifficultyButton extends React.Component<DifficultyButtonProps> {
 	render() {
 		return (
-			<Link href={"/solve?difficulty=" + this.props.difficulty}>
+			<Link href={"/solve?difficulty=" + this.props.difficulty.name}>
 				<div className={styles.difficultyButton}>
 					<h2>{this.props.difficulty.name}</h2>
-					<p>{this.props.difficulty.ages}</p>
+					<p>Age: {this.props.difficulty.ages}</p>
 				</div>
 			</Link>
 		);

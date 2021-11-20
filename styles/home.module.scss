@@ -1,7 +1,24 @@
 @import "./variables.scss";
 
+.difficultyContainer {
+	width: 100%;
+	padding: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .difficultyButton {
 	width: 200px;
 	height: 120px;
 	background-color: $color-box;
+	text-align: center;
+	margin: 0px 5px;
+	border-radius: 6px;
+	border: 1px solid $color-border;
+	transition: 0.25s;
+}
+
+.difficultyButton:hover {
+	background-color: darken($color: $color-box, $amount: 5);
 }
