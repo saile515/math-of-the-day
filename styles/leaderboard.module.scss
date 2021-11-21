@@ -1,18 +1,13 @@
 @import "./variables.scss";
 
 .leaderboard {
-	background-color: $color-secondary;
 	height: 100%;
 	width: 40%;
 }
 
-.leaderboardHeader {
-	border-bottom: $color-border solid 2px;
-}
-
 .leaderboardHeader h4 {
-	margin: 3px;
 	font-size: 2vh;
+	color: $color-text-dimmed;
 }
 
 .leaderboardItem,
@@ -24,16 +19,30 @@
 	text-align: center;
 }
 
+.leaderboardItem {
+	background-color: $color-strong;
+	border-bottom: $color-main solid 3px;
+	border-radius: 6px;
+}
+
 .leaderboardItemIndex,
 .leaderboardItemName,
 .leaderboardItemScore {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	margin: 3px;
 	font-size: 2vh;
 }
 
 .leaderboardList {
 	padding: 0px;
+	margin: 0px;
+	max-height: calc(100% - 10vh);
+	overflow-y: scroll;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.leaderboardList::-webkit-scrollbar {
+	display: none;
 }

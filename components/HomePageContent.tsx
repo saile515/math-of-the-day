@@ -1,8 +1,8 @@
 import React from "react";
-import Link from "next/link";
 import styles from "../styles/home.module.scss";
-import { DifficultyButton, Difficulty } from "../components/Difficulty";
-import { Leaderboard } from "../components/Leaderboard";
+import { DifficultyButton, Difficulty } from "./Difficulty";
+import { Leaderboard } from "./Leaderboard";
+import { Profile } from "./Profile";
 
 interface DifficultySelectorProps {}
 
@@ -56,6 +56,7 @@ export class HomePageContent extends React.Component<
 					</button>
 					<div className={styles.mainContent}>
 						<Leaderboard />
+						<Profile />
 					</div>
 				</div>
 			);

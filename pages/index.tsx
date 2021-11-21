@@ -1,6 +1,7 @@
 import React from "react";
 import type { NextPage } from "next";
 import styles from "../styles/home.module.scss";
+import { useSession, signIn, signOut } from "next-auth/react";
 import { HomePageContent } from "../components/HomePageContent";
 
 const Home: NextPage = () => {

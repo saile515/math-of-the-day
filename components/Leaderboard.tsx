@@ -44,6 +44,13 @@ export class Leaderboard extends React.Component {
 						name="wojihfiyewgfiylfkfrgrggegegegegebdhfe"
 						score={9999999999}
 					/>
+					<LeaderboardItem index={4} name="saile515" score={42069} />
+					<LeaderboardItem index={5} name="saile515" score={42069} />
+					<LeaderboardItem index={6} name="saile515" score={42069} />
+					<LeaderboardItem index={7} name="saile515" score={42069} />
+					<LeaderboardItem index={8} name="saile515" score={42069} />
+					<LeaderboardItem index={9} name="saile515" score={42069} />
+					<LeaderboardItem index={10} name="saile515" score={42069} />
 				</ul>
 			</div>
 		);
