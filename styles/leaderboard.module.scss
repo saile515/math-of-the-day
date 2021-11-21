@@ -1,0 +1,39 @@
+@import "./variables.scss";
+
+.leaderboard {
+	background-color: $color-secondary;
+	height: 100%;
+	width: 40%;
+}
+
+.leaderboardHeader {
+	border-bottom: $color-border solid 2px;
+}
+
+.leaderboardHeader h4 {
+	margin: 3px;
+	font-size: 2vh;
+}
+
+.leaderboardItem,
+.leaderboardHeader {
+	display: grid;
+	grid-auto-flow: column;
+	grid-column-gap: 10px;
+	grid-template-columns: 20% 50% 25%;
+	text-align: center;
+}
+
+.leaderboardItemIndex,
+.leaderboardItemName,
+.leaderboardItemScore {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin: 3px;
+	font-size: 2vh;
+}
+
+.leaderboardList {
+	padding: 0px;
+}
