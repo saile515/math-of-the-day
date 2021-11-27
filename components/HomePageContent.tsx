@@ -1,8 +1,34 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import styles from "../styles/home.module.scss";
 import { DifficultyButton, Difficulty } from "./Difficulty";
 import { Leaderboard } from "./Leaderboard";
 import { Profile } from "./Profile";
+import { useSession, signIn, signOut } from "next-auth/react";
+
+interface SolveButtonProps {
+	handleClick: MouseEventHandler;
+}
+
+function SolveButton({ handleClick }: SolveButtonProps) {
+	const { data: session } = useSession();
+
+	if (session) {
+		return (
+			<button className={styles.mainButton} onClick={handleClick}>
+				Solve
+			</button>
+		);
+	} else {
+		return (
+			<button
+				className={styles.mainButton}
+				onClick={() => signIn("Credentials")}
+			>
+				Solve
+			</button>
+		);
+	}
+}
 
 interface DifficultySelectorProps {}
 
@@ -48,12 +74,7 @@ export class HomePageContent extends React.Component<
 		} else {
 			content = (
 				<div className={styles.mainContentContainer}>
-					<button
-						className={styles.mainButton}
-						onClick={this.handleClick}
-					>
-						Solve
-					</button>
+					<SolveButton handleClick={this.handleClick} />
 					<div className={styles.mainContent}>
 						<Leaderboard />
 						<Profile />

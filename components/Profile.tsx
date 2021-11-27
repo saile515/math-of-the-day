@@ -1,10 +1,10 @@
 import { useSession, signIn, signOut } from "next-auth/react";
+import styles from "../styles/profile.module.scss";
 
 export function Profile() {
 	const { data: session } = useSession();
 
 	if (session) {
-		console.log(session);
 		return (
 			<div>
 				<p>{session.user.name}</p>
@@ -14,8 +14,17 @@ export function Profile() {
 	}
 
 	return (
-		<div>
-			<button onClick={() => signIn("Credentials")}>Sign in</button>
+		<div className={styles.profileContainer}>
+			<p className={styles.signInAlert}>
+				You need to{" "}
+				<button
+					className={styles.signInLink}
+					onClick={() => signIn("Credentials")}
+				>
+					Sign In
+				</button>{" "}
+				to see your profile.
+			</p>
 		</div>
 	);
 }
