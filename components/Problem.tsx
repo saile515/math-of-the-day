@@ -12,25 +12,25 @@ export function Problem() {
 		date: new Date(),
 	});
 	useEffect(() => {
-		fetch("/api/solve/" + router.query.solve)
-			.then((response) => response.json())
-			.then((problemData) => {
-				console.log(problemData);
-				setData(problemData);
-			});
-	});
+		if (router && router.query.solve) {
+			fetch("/api/solve/" + router.query.solve)
+				.then((response) => response.json())
+				.then((problemData) => {
+					console.log("/api/solve/" + router.query.solve);
+					setData(problemData);
+				});
+		}
+	}, [router]);
 
 	if (data) {
-		() => {
-			return (
-				<div>
-					<h1>{data.title}</h1>
-					<h2>{data.difficulty}</h2>
-					<p>{data.problem}</p>
-					<img src={data.image} alt="Image" />
-				</div>
-			);
-		};
+		return (
+			<div>
+				<h1>{data.title}</h1>
+				<h2>{data.difficulty}</h2>
+				<p>{data.problem}</p>
+				<img src={data.image} alt="Image" />
+			</div>
+		);
 	}
 
 	return <p>Error</p>;
