@@ -1,10 +1,11 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { development, secret } from "../../../dbconfig.json";
+import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
+import packageInfo from "../../../dbconfig.json";
+import clientPromise from "../../../lib/mongodb";
 
 const options = {
-	// Configure one or more authentication providers
 	providers: [
 		CredentialsProvider({
 			name: "Credentials",
@@ -16,8 +17,10 @@ const options = {
 				},
 				password: { label: "Password", type: "password" },
 			},
+			id: "credentials",
 			async authorize(credentials, req) {
-				if (development) {
+				console.log("Auth");
+				if (packageInfo.development) {
 					const user = {
 						name: "Test",
 						email: credentials.email,
@@ -29,14 +32,17 @@ const options = {
 					) {
 						return user;
 					}
-					return null;
 				}
 				return null;
 			},
 		}),
 	],
+	pages: {
+		signIn: "/auth",
+		signOut: "/auth",
+	},
 	jwt: {
-		secret: secret,
+		secret: packageInfo.secret,
 	},
 };
 

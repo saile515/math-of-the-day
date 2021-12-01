@@ -1,4 +1,4 @@
-import { Schema, model, Model, models } from "mongoose";
+import { Schema, model, Model } from "mongoose";
 
 export interface problemData {
 	difficulty: string;
@@ -9,11 +9,26 @@ export interface problemData {
 }
 
 export const problemSchema = new Schema<problemData>({
-	difficulty: String,
-	title: String,
-	problem: String,
-	image: String,
-	date: Date,
+	difficulty: {
+		type: String,
+		required: true,
+	},
+	title: {
+		type: String,
+		required: true,
+	},
+	problem: {
+		type: String,
+		required: true,
+	},
+	image: {
+		type: String,
+		required: true,
+	},
+	date: {
+		type: Date,
+		required: true,
+	},
 });
 
 export let Problem: Model<problemData>;

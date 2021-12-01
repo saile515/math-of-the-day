@@ -1,19 +1,20 @@
-import { useSession, signIn, signOut } from "next-auth/react";
+import {
+	GetServerSideProps,
+	NextPage,
+	InferGetServerSidePropsType,
+} from "next";
+import { SignIn } from "../components/Auth";
+import { CtxOrReq } from "next-auth/client/_utils";
+import { getCsrfToken } from "next-auth/react";
 
-export default function Component() {
-	const { data: session } = useSession();
-	if (session) {
-		return (
-			<>
-				Signed in as {session.user.email} <br />
-				<button onClick={() => signOut()}>Sign out</button>
-			</>
-		);
-	}
-	return (
-		<>
-			Not signed in <br />
-			<button onClick={() => signIn("Credentials")}>Sign in</button>
-		</>
-	);
-}
+const Auth: NextPage = ({
+	csrfToken,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+	return <SignIn csrfToken={csrfToken} />;
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+	return { props: { csrfToken: await getCsrfToken(context) } };
+};
+
+export default Auth;
