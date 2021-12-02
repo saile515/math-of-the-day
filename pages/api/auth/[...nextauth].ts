@@ -1,9 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
-import packageInfo from "../../../dbconfig.json";
-import clientPromise from "../../../lib/mongodb";
+import crypto from "crypto";
+import { User } from "../../../backend/database/signup";
+import { connect } from "mongoose";
+import { signIn } from "next-auth/react";
 
 const options = {
 	providers: [
@@ -15,34 +16,41 @@ const options = {
 					type: "email",
 					placeholder: "Email",
 				},
+				name: {
+					label: "Name",
+					type: "name",
+					placeholder: "Name",
+				},
 				password: { label: "Password", type: "password" },
 			},
 			id: "credentials",
 			async authorize(credentials, req) {
-				console.log("Auth");
-				if (packageInfo.development) {
-					const user = {
-						name: "Test",
+				await connect(process.env.DATABASE_URL);
+				let hash = crypto
+					.createHash("sha256")
+					.update(credentials.password)
+					.digest("hex");
+				const promise = await new Promise((resolve, reject) => {
+					User.findOne({
 						email: credentials.email,
-					};
-
-					if (
-						credentials.email == "test@example.com" &&
-						credentials.password == "password"
-					) {
-						return user;
-					}
-				}
-				return null;
+						password: hash,
+					}).exec(function (err: Error, data: any) {
+						if (err) {
+							throw err;
+						}
+						resolve(data);
+					});
+				});
+				console.log(promise);
+				return promise;
 			},
 		}),
 	],
 	pages: {
 		signIn: "/auth",
-		signOut: "/auth",
 	},
 	jwt: {
-		secret: packageInfo.secret,
+		secret: process.env.SECRET,
 	},
 };
 

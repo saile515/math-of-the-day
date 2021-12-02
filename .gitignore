@@ -36,8 +36,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
-# Config
-/dbconfig.json
-
 # Markdown
 /TODO.md

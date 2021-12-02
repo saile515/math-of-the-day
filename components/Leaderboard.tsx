@@ -41,7 +41,7 @@ export class Leaderboard extends React.Component {
 					<LeaderboardItem index={2} name="saile515" score={42069} />
 					<LeaderboardItem
 						index={3}
-						name="wojihfiyewgfiylfkfrgrggegegegegebdhfe"
+						name="wojihfiyewgfiylfkfrgrggegegege"
 						score={9999999999}
 					/>
 					<LeaderboardItem index={4} name="saile515" score={42069} />

@@ -4,7 +4,6 @@ import {
 	InferGetServerSidePropsType,
 } from "next";
 import { SignIn } from "../components/Auth";
-import { CtxOrReq } from "next-auth/client/_utils";
 import { getCsrfToken } from "next-auth/react";
 
 const Auth: NextPage = ({

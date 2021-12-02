@@ -1,23 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { connect } from "mongoose";
-import { url } from "../../../dbconfig.json";
 import {
 	Problem,
 	problemData,
 	createProblem,
 } from "../../../backend/database/problem";
 
-connect(url);
-
-// for (let i = 0; i < 10; i++) {
-// 	createProblem({
-// 		difficulty: "Medium",
-// 		title: `Problem ${i}`,
-// 		problem: "Problem description goes here.",
-// 		image: "https://cdn3.iconfinder.com/data/icons/shopping-and-ecommerce-32/90/calculator-512.png",
-// 		date: new Date(2021, 10, 25 + i),
-// 	});
-// }
+connect(process.env.DATABASE_URL);
 
 export default async function handler(
 	req: NextApiRequest,

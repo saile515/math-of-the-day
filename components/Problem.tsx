@@ -16,7 +16,6 @@ export function Problem() {
 			fetch("/api/solve/" + router.query.solve)
 				.then((response) => response.json())
 				.then((problemData) => {
-					console.log("/api/solve/" + router.query.solve);
 					setData(problemData);
 				});
 		}
