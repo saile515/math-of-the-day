@@ -4,6 +4,7 @@ export interface problemData {
 	difficulty: string;
 	title: string;
 	problem: string;
+	answer: string;
 	image: string;
 	date: Date;
 }

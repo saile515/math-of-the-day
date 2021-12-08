@@ -1,0 +1,28 @@
+@import "/styles/variables.scss";
+
+.name {
+	font-size: 5vh;
+	font-weight: bold;
+	margin: 5px;
+}
+
+.email {
+	font-size: 2vh;
+	margin: 5px;
+	color: $color-text-dimmed;
+}
+
+.score {
+	font-size: 3vh;
+	font-weight: bold;
+}
+
+.score span {
+	font-weight: normal;
+}
+
+.statsContainer {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}

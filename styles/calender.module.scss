@@ -1,0 +1,23 @@
+@import "/styles/variables.scss";
+
+.calendarContainer {
+	display: grid;
+	grid-template-columns: repeat(7, calc(100% / 7));
+	gap: 3px;
+	width: 250px;
+}
+
+.tile {
+	text-align: center;
+	border-radius: 3px;
+	padding: 3px 0px;
+}
+
+.solvedTile {
+	background-color: $color-box;
+	color: $color-strong;
+}
+
+.unsolvedTile {
+	background-color: $color-secondary;
+}

@@ -2,28 +2,35 @@ import { Schema, model, Model } from "mongoose";
 import crypto from "crypto";
 
 export interface credentials {
-	email: string;
-	password: string;
-	name: string;
+	email?: string;
+	password?: string;
+	name?: string;
+	score?: number;
+	solved?: Date[];
 }
 
-const UserSchema = new Schema<credentials>(
-	{
-		email: {
-			type: String,
-			required: true,
-		},
-		password: {
-			type: String,
-			required: true,
-		},
-		name: {
-			type: String,
-			required: true,
-		},
+const UserSchema = new Schema<credentials>({
+	email: {
+		type: String,
+		required: true,
 	},
-	{ bufferCommands: false }
-);
+	password: {
+		type: String,
+		required: true,
+	},
+	name: {
+		type: String,
+		required: true,
+	},
+	score: {
+		type: Number,
+		required: true,
+	},
+	solved: {
+		type: [Date],
+		required: true,
+	},
+});
 
 export let User: Model<credentials>;
 
@@ -41,12 +48,13 @@ export async function createAccount(credentials: credentials) {
 			.update(credentials.password)
 			.digest("hex");
 		userCredentials.password = hash;
+		userCredentials.solved = [];
+		userCredentials.score = 0;
 		const user = new User(userCredentials);
 		user.save(function (err: Error) {
 			if (err) throw err;
 			return true;
 		});
-		console.log("User Signed Up");
 	}
 	return false;
 }

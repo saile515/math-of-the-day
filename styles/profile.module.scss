@@ -2,6 +2,8 @@
 
 .profileContainer {
 	height: 100%;
+	background-color: $color-strong;
+	border-radius: 10px;
 }
 
 .signInAlert {
@@ -9,10 +11,8 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: $color-strong;
 	margin: 0px;
 	height: 100%;
-	border-radius: 10px;
 }
 
 .signInLink {
@@ -20,4 +20,5 @@
 	border: none;
 	color: $color-link;
 	font-size: 1.1em;
+	padding: 0px 10px;
 }

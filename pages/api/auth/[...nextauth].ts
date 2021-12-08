@@ -4,9 +4,26 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import crypto from "crypto";
 import { User } from "../../../backend/database/signup";
 import { connect } from "mongoose";
-import { signIn } from "next-auth/react";
+import {
+	Session,
+	SessionStrategy,
+	User as UserType,
+} from "next-auth/core/types";
 
 const options = {
+	callbacks: {
+		async session({ session, token, user }: any) {
+			session.user = token.user;
+			return session;
+		},
+		async jwt({ token, user }: any) {
+			if (user) {
+				token.user = user;
+				token.user.id = user.id;
+			}
+			return token;
+		},
+	},
 	providers: [
 		CredentialsProvider({
 			name: "Credentials",
@@ -38,10 +55,17 @@ const options = {
 						if (err) {
 							throw err;
 						}
-						resolve(data);
+						let user = data;
+						if (data != null) {
+							user = {
+								email: data.email,
+								name: data.name,
+								id: data._id,
+							};
+						}
+						resolve(user);
 					});
 				});
-				console.log(promise);
 				return promise;
 			},
 		}),
@@ -49,10 +73,15 @@ const options = {
 	pages: {
 		signIn: "/auth",
 	},
+	secret: process.env.SECRET,
 	jwt: {
 		secret: process.env.SECRET,
+	},
+	session: {
+		strategy: "jwt" as SessionStrategy,
+		maxAge: 30 * 24 * 60 * 60,
 	},
 };
 
 export default (req: NextApiRequest, res: NextApiResponse<any>) =>
-	NextAuth(req, res, options);
+	NextAuth(req, res, options as any);

@@ -5,6 +5,10 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
-	createAccount(req.body);
-	res.end("true");
+	try {
+		createAccount(req.body);
+	} catch (err) {
+		throw err;
+	}
+	res.redirect("/auth");
 }
