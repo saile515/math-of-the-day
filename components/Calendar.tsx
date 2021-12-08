@@ -1,8 +1,6 @@
-import { syncBuiltinESMExports } from "module";
-import { GridFSBucket } from "mongoose/node_modules/mongodb";
-import { disconnect } from "process";
 import { ReactElement, useEffect, useState } from "react";
 import styles from "../styles/calender.module.scss";
+import { credentials } from "../backend/database/signup";
 
 interface CalendarTileProps {
 	solved: boolean;
@@ -18,14 +16,16 @@ function getSolvedProblems(problems: Date[]) {
 	const month = new Date().getMonth();
 	const year = new Date().getFullYear();
 
-	const solvedProblems: Date[] = [];
+	const solvedProblems: boolean[] = [];
 
 	for (let i = 0; i < problems.length; i++) {
 		if (
 			problems[i].getFullYear() == year &&
 			problems[i].getMonth() == month
 		) {
-			solvedProblems.push(problems[i]);
+			solvedProblems.push(true);
+		} else {
+			solvedProblems.push(false);
 		}
 	}
 
@@ -48,11 +48,19 @@ function CalendarTile(props: CalendarTileProps) {
 	);
 }
 
-export function Calendar() {
+interface CalendarProps {
+	data: credentials;
+}
+
+export function Calendar(props: CalendarProps) {
 	const dateTiles: ReactElement[] = [];
 	const [fillerSize, setFillerSize] = useState<number>();
+
+	const solvedProblems = getSolvedProblems(props.data.solved);
 	for (let i = 0; i < daysInMonth(new Date().getMonth()); i++) {
-		dateTiles.push(<CalendarTile key={i} solved={true} date={i + 1} />);
+		dateTiles.push(
+			<CalendarTile key={i} solved={solvedProblems[i]} date={i + 1} />
+		);
 	}
 
 	useEffect(() => {

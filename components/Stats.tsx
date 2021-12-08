@@ -26,7 +26,7 @@ export function Stats(props: StatsProps) {
 			<p className={styles.score}>
 				Score: <span>{profile.score}</span>
 			</p>
-			<Calendar />
+			{profile.solved ? <Calendar data={profile} /> : []}
 		</div>
 	);
 }
