@@ -2,7 +2,7 @@
 
 .calendarContainer {
 	display: grid;
-	grid-template-columns: repeat(7, calc(100% / 7));
+	grid-template-columns: repeat(7, 1fr);
 	gap: 3px;
 	width: 250px;
 }
@@ -20,4 +20,8 @@
 
 .unsolvedTile {
 	background-color: $color-secondary;
+}
+
+.today {
+	filter: brightness(85%);
 }

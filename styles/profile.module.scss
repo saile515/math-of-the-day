@@ -4,6 +4,7 @@
 	height: 100%;
 	background-color: $color-strong;
 	border-radius: 10px;
+	position: relative;
 }
 
 .signInAlert {
@@ -21,4 +22,16 @@
 	color: $color-link;
 	font-size: 1.1em;
 	padding: 0px 10px;
+}
+
+.signOutButton {
+	position: absolute;
+	left: 20px;
+	bottom: 20px;
+	background-color: $color-main;
+	border: $color-secondary 1px solid;
+	border-radius: 1em;
+	width: 6em;
+	height: 2em;
+	font-size: 0.8em;
 }

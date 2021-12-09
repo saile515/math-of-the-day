@@ -11,7 +11,12 @@ export function Profile() {
 		return (
 			<div className={styles.profileContainer}>
 				<Stats session={session} />
-				<button onClick={() => signOut()}>Sign Out</button>
+				<button
+					onClick={() => signOut()}
+					className={styles.signOutButton}
+				>
+					Sign Out
+				</button>
 			</div>
 		);
 	}
