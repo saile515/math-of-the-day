@@ -7,20 +7,19 @@ function daysInMonth(month: number) {
 	return d.getDate();
 }
 
-function getSolvedProblems(problems: Date[]) {
+function getSolvedProblems(problems: { date: Date; difficulty: string }[]) {
 	const month = new Date().getMonth();
 	const year = new Date().getFullYear();
 
 	const solvedProblems: boolean[] = [];
 
 	for (let i = 0; i < problems.length; i++) {
-		const date = new Date(problems[i]);
+		const date = new Date(problems[i].date);
 		if (date.getFullYear() == year && date.getMonth() == month) {
 			solvedProblems[date.getDate() - 1] = true;
 		}
 	}
 
-	console.log(solvedProblems);
 	return solvedProblems;
 }
 
@@ -82,7 +81,6 @@ export function Calendar(props: CalendarProps) {
 			).getDay()
 		);
 	}, []);
-
 	return (
 		<div className={styles.calendarContainer}>
 			<div className={`${styles.calendarFiller} calendarFiller`}></div>

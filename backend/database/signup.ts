@@ -6,7 +6,7 @@ export interface credentials {
 	password?: string;
 	name?: string;
 	score?: number;
-	solved?: Date[];
+	solved?: { date: Date; difficulty: string }[];
 }
 
 const UserSchema = new Schema<credentials>({
@@ -27,7 +27,18 @@ const UserSchema = new Schema<credentials>({
 		required: true,
 	},
 	solved: {
-		type: [Date],
+		type: [
+			{
+				date: {
+					type: Date,
+					required: true,
+				},
+				difficulty: {
+					type: String,
+					required: true,
+				},
+			},
+		],
 		required: true,
 	},
 });

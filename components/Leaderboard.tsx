@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import styles from "../styles/leaderboard.module.scss";
 
 interface leaderboardItemInterface {
@@ -23,36 +23,36 @@ class LeaderboardItem extends React.Component<leaderboardItemInterface> {
 	}
 }
 
-export class Leaderboard extends React.Component {
-	render() {
-		return (
-			<div className={styles.leaderboard}>
-				<div className={styles.leaderboardHeader}>
-					<h4>Index</h4>
-					<h4>Name</h4>
-					<h4>Score</h4>
-				</div>
-				<ul className={styles.leaderboardList}>
-					<LeaderboardItem
-						index={1}
-						name="Elias Jörgensen"
-						score={69420}
-					/>
-					<LeaderboardItem index={2} name="saile515" score={42069} />
-					<LeaderboardItem
-						index={3}
-						name="wojihfiyewgfiylfkfrgrggegegege"
-						score={9999999999}
-					/>
-					<LeaderboardItem index={4} name="saile515" score={42069} />
-					<LeaderboardItem index={5} name="saile515" score={42069} />
-					<LeaderboardItem index={6} name="saile515" score={42069} />
-					<LeaderboardItem index={7} name="saile515" score={42069} />
-					<LeaderboardItem index={8} name="saile515" score={42069} />
-					<LeaderboardItem index={9} name="saile515" score={42069} />
-					<LeaderboardItem index={10} name="saile515" score={42069} />
-				</ul>
+export function Leaderboard() {
+	const [leaderboardItems, setLeaderboardItems] = useState<ReactElement[]>();
+
+	useEffect(() => {
+		fetch("/api/leaderboard")
+			.then((data) => data.json())
+			.then((data) => {
+				const items: ReactElement[] = [];
+				for (let i = 0; i < data.length; i++) {
+					items.push(
+						<LeaderboardItem
+							key={i}
+							name={data[i].name}
+							score={data[i].score}
+							index={data[i].index}
+						/>
+					);
+				}
+				setLeaderboardItems(items);
+			});
+	}, []);
+
+	return (
+		<div className={styles.leaderboard}>
+			<div className={styles.leaderboardHeader}>
+				<h4>Index</h4>
+				<h4>Name</h4>
+				<h4>Score</h4>
 			</div>
-		);
-	}
+			<ul className={styles.leaderboardList}>{leaderboardItems}</ul>
+		</div>
+	);
 }

@@ -28,8 +28,9 @@
 	position: absolute;
 	left: 20px;
 	bottom: 20px;
-	background-color: $color-main;
-	border: $color-secondary 1px solid;
+	background-color: $color-strong;
+	border: $color-box 1px solid;
+	color: $color-box;
 	border-radius: 1em;
 	width: 6em;
 	height: 2em;

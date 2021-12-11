@@ -26,3 +26,8 @@
 	align-items: center;
 	flex-direction: column;
 }
+
+.mainStats {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}

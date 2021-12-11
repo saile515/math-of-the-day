@@ -1,0 +1,35 @@
+@import "./variables.scss";
+
+.chart {
+	height: auto;
+	width: fit-content;
+	display: flex;
+}
+
+.chart svg {
+	height: 100%;
+}
+
+.chartList {
+	list-style: none;
+	padding-left: 10px;
+}
+
+.chartListItem {
+	display: flex;
+	align-items: center;
+}
+
+.chartListItem div {
+	width: 25px;
+	height: 20px;
+}
+
+.chartListItem p {
+	margin: 0px 5px;
+}
+
+.circle {
+	fill: none;
+	stroke-width: 2.8;
+}

@@ -4,7 +4,7 @@ export interface problemData {
 	difficulty: string;
 	title: string;
 	problem: string;
-	answer: string;
+	answer?: string;
 	image: string;
 	date: Date;
 }
@@ -19,6 +19,10 @@ export const problemSchema = new Schema<problemData>({
 		required: true,
 	},
 	problem: {
+		type: String,
+		required: true,
+	},
+	answer: {
 		type: String,
 		required: true,
 	},

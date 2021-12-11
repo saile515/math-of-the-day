@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { credentials } from "../backend/database/signup";
 import { Calendar } from "./Calendar";
 import styles from "../styles/stats.module.scss";
+import { SolvedDifficulty } from "./SolvedDifficulty";
 
 interface StatsProps {
 	session: Session;
@@ -26,7 +27,14 @@ export function Stats(props: StatsProps) {
 			<p className={styles.score}>
 				Score: <span>{profile.score}</span>
 			</p>
-			{profile.solved ? <Calendar data={profile} /> : []}
+			{profile.solved ? (
+				<div className={styles.mainStats}>
+					<Calendar data={profile} />
+					<SolvedDifficulty data={profile} />
+				</div>
+			) : (
+				[]
+			)}
 		</div>
 	);
 }
