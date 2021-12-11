@@ -22,11 +22,13 @@ export function Stats(props: StatsProps) {
 
 	return (
 		<div className={styles.statsContainer}>
-			<p className={styles.name}>{profile.name}</p>
-			<p className={styles.email}>{profile.email}</p>
-			<p className={styles.score}>
-				Score: <span>{profile.score}</span>
-			</p>
+			<div className={styles.basicStats}>
+				<p className={styles.name}>{profile.name}</p>
+				<p className={styles.email}>{profile.email}</p>
+				<p className={styles.score}>
+					Score: <span>{profile.score}</span>
+				</p>
+			</div>
 			{profile.solved ? (
 				<div className={styles.mainStats}>
 					<Calendar data={profile} />

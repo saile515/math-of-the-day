@@ -1,5 +1,17 @@
 @import "/styles/variables.scss";
 
+.statsContainer {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	flex-direction: row;
+}
+
+.basicStats {
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+}
+
 .name {
 	font-size: 5vh;
 	font-weight: bold;
@@ -15,19 +27,16 @@
 .score {
 	font-size: 3vh;
 	font-weight: bold;
+	margin: 5px;
 }
 
 .score span {
 	font-weight: normal;
 }
 
-.statsContainer {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-}
-
 .mainStats {
+	padding-top: 40px;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	gap: 40px;
 }

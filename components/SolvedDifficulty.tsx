@@ -112,6 +112,20 @@ export function SolvedDifficulty(props: SolvedDifficultyProps) {
 					)}`}
 					stroke="#800080"
 				/>
+				<foreignObject
+					x="20%"
+					y="10%"
+					width="60%"
+					height="80%"
+					textAnchor="center"
+				>
+					<div
+						data-xmlns="http://www.w3.org/1999/xhtml"
+						className={styles.textContainer}
+					>
+						<p className={styles.text}>Average solved difficulty</p>
+					</div>
+				</foreignObject>
 			</svg>
 			<ul className={styles.chartList}>
 				<li className={styles.chartListItem}>

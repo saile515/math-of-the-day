@@ -32,4 +32,27 @@
 .circle {
 	fill: none;
 	stroke-width: 2.8;
+	animation: progress 1s ease-out forwards;
+}
+
+.textContainer {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.text {
+	font-size: 4px;
+	text-align: center;
+	margin: 0px;
+	margin-bottom: 2px;
+}
+
+@keyframes progress {
+	0% {
+		stroke-dasharray: 0 100;
+		stroke-dashoffset: 0;
+	}
 }
