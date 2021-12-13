@@ -1,6 +1,6 @@
 import { Session } from "next-auth";
 import { useEffect, useState } from "react";
-import { credentials } from "../backend/database/signup";
+import { credentials } from "../backend/database/register";
 import { Calendar } from "./Calendar";
 import styles from "../styles/stats.module.scss";
 import { SolvedDifficulty } from "./SolvedDifficulty";

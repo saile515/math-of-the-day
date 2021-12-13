@@ -1,6 +1,6 @@
 import { connect } from "mongoose";
 import { NextApiRequest, NextApiResponse } from "next";
-import { User } from "../../backend/database/signup";
+import { User } from "../../backend/database/register";
 
 connect(process.env.DATABASE_URL);
 
