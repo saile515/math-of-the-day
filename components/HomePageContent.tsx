@@ -4,6 +4,7 @@ import { DifficultyButton, Difficulty } from "./Difficulty";
 import { Leaderboard } from "./Leaderboard";
 import { Profile } from "./Profile";
 import { useSession, signIn, signOut } from "next-auth/react";
+import router from "next/router";
 
 interface SolveButtonProps {
 	handleClick: MouseEventHandler;
@@ -22,7 +23,7 @@ function SolveButton({ handleClick }: SolveButtonProps) {
 		return (
 			<button
 				className={styles.mainButton}
-				onClick={() => signIn("Credentials")}
+				onClick={() => router.push("/signup")}
 			>
 				Solve
 			</button>

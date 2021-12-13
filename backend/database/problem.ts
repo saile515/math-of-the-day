@@ -1,4 +1,6 @@
-import { Schema, model, Model } from "mongoose";
+import { Schema, model, Model, connect } from "mongoose";
+
+connect(process.env.DATABASE_URL);
 
 export interface problemData {
 	difficulty: string;

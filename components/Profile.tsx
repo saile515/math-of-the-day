@@ -1,6 +1,4 @@
 import { useSession, signIn, signOut } from "next-auth/react";
-import { useEffect, useState } from "react";
-import { credentials } from "../backend/database/signup";
 import styles from "../styles/profile.module.scss";
 import { Stats } from "../components/Stats";
 

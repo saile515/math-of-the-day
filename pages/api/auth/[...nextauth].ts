@@ -10,6 +10,8 @@ import {
 	User as UserType,
 } from "next-auth/core/types";
 
+connect(process.env.DATABASE_URL);
+
 const options = {
 	callbacks: {
 		async session({ session, token, user }: any) {
@@ -42,7 +44,6 @@ const options = {
 			},
 			id: "credentials",
 			async authorize(credentials, req) {
-				await connect(process.env.DATABASE_URL);
 				let hash = crypto
 					.createHash("sha256")
 					.update(credentials.password)

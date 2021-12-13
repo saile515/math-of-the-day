@@ -5,10 +5,9 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
-	try {
-		createAccount(req.body);
-	} catch (err) {
-		throw err;
+	if (await createAccount(req.body)) {
+		res.redirect("/auth");
+	} else {
+		res.redirect("/signup?error=userExists");
 	}
-	res.redirect("/auth");
 }

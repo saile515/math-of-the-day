@@ -1,6 +1,8 @@
+import { connect } from "mongoose";
 import { NextApiRequest, NextApiResponse } from "next";
-import { SYMBOL_PREVIEW_DATA } from "next/dist/server/api-utils";
 import { credentials, User } from "../../../backend/database/signup";
+
+connect(process.env.DATABASE_URL);
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
 	return new Promise((resolve, reject) =>

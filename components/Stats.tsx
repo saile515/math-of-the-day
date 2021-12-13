@@ -13,6 +13,7 @@ export function Stats(props: StatsProps) {
 	const [profile, setProfileData] = useState<credentials>({});
 
 	useEffect(() => {
+		console.log(`/api/profile/${props.session.user.id}`);
 		fetch(`/api/profile/${props.session.user.id}`)
 			.then((data) => data.json())
 			.then((data) => {

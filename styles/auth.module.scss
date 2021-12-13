@@ -1,0 +1,55 @@
+@import "./variables.scss";
+
+.container {
+	background-color: $color-strong;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 350px;
+	height: 400px;
+	border-radius: 10px;
+}
+
+.label {
+	color: $color-text-dimmed;
+	font-weight: bold;
+	width: 300px;
+	margin: 20px 0px 5px 0px;
+}
+
+.input {
+	width: 300px;
+	height: 40px;
+	border: 1px $color-text-dimmed solid;
+	border-radius: 5px;
+}
+
+.button {
+	width: 300px;
+	height: 40px;
+	background-color: $color-box;
+	border: none;
+	border-radius: 5px;
+	color: $color-strong;
+	margin-top: 20px;
+}
+
+.passwordContainer {
+	position: relative;
+}
+
+.togglePassword {
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	padding: 0px;
+	width: 30px;
+	height: 30px;
+	font-size: 20px;
+	border: none;
+	background-color: transparent;
+}
+
+.error {
+	color: #ff0000;
+}

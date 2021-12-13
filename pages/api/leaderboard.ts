@@ -1,5 +1,8 @@
+import { connect } from "mongoose";
 import { NextApiRequest, NextApiResponse } from "next";
-import { credentials, User } from "../../backend/database/signup";
+import { User } from "../../backend/database/signup";
+
+connect(process.env.DATABASE_URL);
 
 export default async function handler(
 	req: NextApiRequest,
@@ -23,7 +26,6 @@ export default async function handler(
 				});
 			}
 
-			return users;
+			res.send(JSON.stringify(users));
 		});
-	res.send(JSON.stringify(users));
 }

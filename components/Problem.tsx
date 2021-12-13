@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { problemData } from "../backend/database/problem";
+import Image from "next/image";
 
 export function Problem() {
 	const router = useRouter();
@@ -27,7 +28,7 @@ export function Problem() {
 				<h1>{data.title}</h1>
 				<h2>{data.difficulty}</h2>
 				<p>{data.problem}</p>
-				<img src={data.image} alt="Image" />
+				<Image src={data.image} alt="Image" />
 			</div>
 		);
 	}

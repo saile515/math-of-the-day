@@ -1,5 +1,7 @@
-import { Schema, model, Model } from "mongoose";
+import { Schema, model, Model, connect } from "mongoose";
 import crypto from "crypto";
+
+connect(process.env.DATABASE_URL);
 
 export interface credentials {
 	email?: string;
@@ -52,20 +54,24 @@ try {
 }
 
 export async function createAccount(credentials: credentials) {
-	if (!(await User.exists({ email: credentials.email }))) {
-		let userCredentials = credentials;
-		let hash = crypto
-			.createHash("sha256")
-			.update(credentials.password)
-			.digest("hex");
-		userCredentials.password = hash;
-		userCredentials.solved = [];
-		userCredentials.score = 0;
-		const user = new User(userCredentials);
-		user.save(function (err: Error) {
-			if (err) throw err;
-			return true;
-		});
-	}
-	return false;
+	const exists = await User.exists({ email: credentials.email });
+	return new Promise((resolve, reject) => {
+		if (exists) {
+			resolve(false);
+		} else {
+			let userCredentials = credentials;
+			let hash = crypto
+				.createHash("sha256")
+				.update(credentials.password)
+				.digest("hex");
+			userCredentials.password = hash;
+			userCredentials.solved = [];
+			userCredentials.score = 0;
+			const user = new User(userCredentials);
+			user.save(function (err: Error) {
+				if (err) throw err;
+				resolve(true);
+			});
+		}
+	});
 }

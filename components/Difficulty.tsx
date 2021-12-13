@@ -28,7 +28,7 @@ type DifficultyButtonProps = {
 export class DifficultyButton extends React.Component<DifficultyButtonProps> {
 	render() {
 		return (
-			<Link href={"/solve/" + this.props.difficulty.name}>
+			<Link href={"/solve/" + this.props.difficulty.name} passHref>
 				<div className={styles.difficultyButton}>
 					<h2>{this.props.difficulty.name}</h2>
 					<p>Age: {this.props.difficulty.ages}</p>
