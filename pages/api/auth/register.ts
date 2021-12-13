@@ -1,13 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { createAccount } from "../../../backend/database/signup";
+import { createAccount } from "../../../backend/database/register";
 
 export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
 	if (await createAccount(req.body)) {
-		res.redirect("/auth");
+		res.redirect("/login");
 	} else {
-		res.redirect("/signup?error=userExists");
+		res.redirect("/register?error=userExists");
 	}
 }

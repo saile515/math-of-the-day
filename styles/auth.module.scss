@@ -1,37 +1,48 @@
 @import "./variables.scss";
+.page {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
 .container {
+	position: relative;
 	background-color: $color-strong;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 350px;
-	height: 400px;
-	border-radius: 10px;
+	width: 50vh;
+	height: 60vh;
+	border-radius: 2vh;
 }
 
 .label {
 	color: $color-text-dimmed;
 	font-weight: bold;
-	width: 300px;
-	margin: 20px 0px 5px 0px;
+	width: 40vh;
+	margin: 2vh 0px 0.5vh 0px;
+	font-size: 2.5vh;
 }
 
 .input {
-	width: 300px;
-	height: 40px;
+	width: 40vh;
+	height: 6vh;
 	border: 1px $color-text-dimmed solid;
-	border-radius: 5px;
+	border-radius: 1vh;
+	font-size: 2vh;
+	padding-left: 1.3vh;
 }
 
 .button {
-	width: 300px;
-	height: 40px;
+	width: 40vh;
+	height: 6vh;
 	background-color: $color-box;
 	border: none;
-	border-radius: 5px;
+	border-radius: 1vh;
 	color: $color-strong;
-	margin-top: 20px;
+	margin-top: 3vh;
 }
 
 .passwordContainer {
@@ -40,16 +51,37 @@
 
 .togglePassword {
 	position: absolute;
-	right: 5px;
-	top: 5px;
+	right: 0.5vh;
+	top: 0.5vh;
 	padding: 0px;
-	width: 30px;
-	height: 30px;
-	font-size: 20px;
+	width: 5vh;
+	height: 5vh;
 	border: none;
 	background-color: transparent;
+	background-size: 3vh;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.eyeOpen {
+	background-image: url("../public/Eye-open.png");
+}
+
+.eyeClosed {
+	background-image: url("../public/Eye-closed.png");
 }
 
 .error {
 	color: #ff0000;
+	font-size: 2vh;
+}
+
+.alert {
+	position: absolute;
+	bottom: 1vh;
+	font-size: 2vh;
+}
+
+.link {
+	color: $color-box;
 }

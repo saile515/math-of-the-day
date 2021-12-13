@@ -1,6 +1,6 @@
 import { ReactElement, useEffect, useState } from "react";
 import styles from "../styles/calender.module.scss";
-import { credentials } from "../backend/database/signup";
+import { credentials } from "../backend/database/register";
 
 function daysInMonth(month: number) {
 	var d = new Date(new Date().getFullYear(), month + 1, 0);

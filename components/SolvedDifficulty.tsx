@@ -1,4 +1,4 @@
-import { credentials } from "../backend/database/signup";
+import { credentials } from "../backend/database/register";
 import styles from "../styles/circularChart.module.scss";
 
 interface SolvedDifficultyProps {

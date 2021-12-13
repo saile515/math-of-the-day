@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import crypto from "crypto";
-import { User } from "../../../backend/database/signup";
+import { User } from "../../../backend/database/register";
 import { connect } from "mongoose";
 import {
 	Session,
