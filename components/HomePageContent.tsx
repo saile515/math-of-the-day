@@ -23,7 +23,7 @@ function SolveButton({ handleClick }: SolveButtonProps) {
 		return (
 			<button
 				className={styles.mainButton}
-				onClick={() => router.push("/signup")}
+				onClick={() => router.push("/register")}
 			>
 				Solve
 			</button>

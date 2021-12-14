@@ -16,10 +16,10 @@ const SignUp: NextPage = () => {
 	if (error) {
 		switch (error) {
 			case "userExists":
-				errorString = "A user with this email already exists.";
+				errorString = "A user with this email already exists";
 				break;
 			case "invalidEmail":
-				errorString = "Please insert a valid email.";
+				errorString = "Please insert a valid email";
 				break;
 		}
 	}
@@ -88,7 +88,10 @@ const SignUp: NextPage = () => {
 				{errorElement}
 				<p className={styles.alert}>
 					Already have an account?{" "}
-					<Link href="/login" passHref>
+					<Link
+						href="/login?callbackUrl=http://localhost:3000/"
+						passHref
+					>
 						<a className={styles.link}>Login</a>
 					</Link>{" "}
 					instead.

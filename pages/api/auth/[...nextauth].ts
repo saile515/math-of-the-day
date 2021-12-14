@@ -72,7 +72,7 @@ const options = {
 		}),
 	],
 	pages: {
-		signIn: "/auth",
+		signIn: "/login",
 	},
 	secret: process.env.SECRET,
 	jwt: {
@@ -85,4 +85,4 @@ const options = {
 };
 
 export default (req: NextApiRequest, res: NextApiResponse<any>) =>
-	NextAuth(req, res, options as any);
+	NextAuth(req, res, options);
